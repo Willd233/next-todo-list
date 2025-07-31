@@ -33,12 +33,10 @@ export function SignUp() {
 
   const onSubmit = async (data: TSignUpForm) => {
     setStatus("Loading");
-    console.log(data);
     const newData = {
       name: data.name.trim(),
       email: data.email.trim(),
       password: data.password.trim(),
-      confirmPassword: data.confirmPassword.trim(),
     };
 
     try {

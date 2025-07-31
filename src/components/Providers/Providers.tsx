@@ -18,6 +18,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         pauseOnHover
         theme="light"
         transition={Bounce}
+        className="toast-container"
       />
       {children}
     </NextAuthSessionProvider>

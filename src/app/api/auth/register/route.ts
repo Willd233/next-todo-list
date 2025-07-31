@@ -3,12 +3,6 @@ import User from "@/modules/user.schema";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
-type TUser = {
-  name: string;
-  email: string;
-  password: string;
-};
-
 export async function POST(req: Request) {
   await dbConnect();
 
@@ -17,16 +11,6 @@ export async function POST(req: Request) {
   if (!name || !email || !password) {
     return NextResponse.json({
       message: "All fields are required",
-    });
-  }
-
-  const userExists: TUser | null = await User.findOne({ email });
-
-  console.log(userExists);
-
-  if (userExists?.name || userExists?.email) {
-    return NextResponse.json({
-      message: "User already exists",
     });
   }
 
@@ -48,8 +32,20 @@ export async function POST(req: Request) {
       user: newUser,
     });
   } catch (error: any) {
-    return NextResponse.json({
-      message: error.message,
-    });
+    if (error.code === 11000) {
+      return NextResponse.json(
+        {
+          message: "User already exists",
+        },
+        { status: 409 }
+      );
+    }
+    return NextResponse.json(
+      {
+        message: "Something went wrong",
+        error: error.message,
+      },
+      { status: 500 }
+    );
   }
 }
