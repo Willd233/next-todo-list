@@ -1,0 +1,20 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(6, 255, 255, 0.116);
+}
+
+.form {
+  width: 25vw;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+}
+
+.button {
+  margin-top: 0.8rem;
+}

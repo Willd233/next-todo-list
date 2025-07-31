@@ -1,7 +1,25 @@
 "use client";
 import { SessionProvider as NextAuthSessionProvider } from "next-auth/react";
-import React from "react";
+import { Bounce, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <NextAuthSessionProvider>{children}</NextAuthSessionProvider>;
+  return (
+    <NextAuthSessionProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+      {children}
+    </NextAuthSessionProvider>
+  );
 }

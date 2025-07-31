@@ -1,0 +1,132 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 10px 0;
+  user-select: none;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.inputContainer {
+  border-radius: 5px;
+  background: rgba(59, 58, 76, 0.8);
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.focused {
+  & > .inputIcon {
+    color: #f5be47;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 0 5px;
+  height: 32px;
+  transition: color 0.3s ease;
+  color: #fff;
+  font-family: Play;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.formLabel {
+  color: #afaebf;
+  font-family: "Play";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0 10px;
+}
+
+.inputIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  color: #fff;
+  transition: color 0.3s ease;
+
+  svg {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+.error {
+  color: #ff9900b7;
+  font-family: "Play";
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  height: 1.3rem;
+  text-align: end;
+}
+
+.button {
+  display: flex;
+  background: rgba(59, 58, 76, 0.8);
+  color: #fff;
+  font-family: "Play", sans-serif;
+  font-size: 16px;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.3s ease;
+  justify-content: center;
+
+  &:hover,
+  &.active {
+    background: #f5be47;
+  }
+
+  &.main {
+    height: 32px;
+    font-size: 14px;
+  }
+
+  &.iconOnly {
+    color: #fff;
+    background: rgba(59, 58, 76, 0.5);
+    border: 1px solid transparent;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+
+    &:hover,
+    &.active {
+      color: #f5be47;
+      border-color: #f5be47;
+      background: rgba(59, 58, 76, 1);
+    }
+  }
+
+  & > .buttonIcon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & > .buttonText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+}
