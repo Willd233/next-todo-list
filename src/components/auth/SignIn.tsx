@@ -25,7 +25,6 @@ export function SignIn() {
   } = useForm<TSignInForm>();
 
   const onSubmit = async (data: TSignInForm) => {
-    console.log(data);
     setStatus("Loading");
     const result = await signIn("credentials", {
       email: data.email.toLowerCase().trim(),
