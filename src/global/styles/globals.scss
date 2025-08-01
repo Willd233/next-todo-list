@@ -1,12 +1,22 @@
 :root {
-  --background: #ffffff;
+  --background: #f5f5f5;
   --foreground: #171717;
   --base-font-size: 62.5%;
+
+  --bg-dark: #1a1a1a;
+  --bg-card: #1f1f1f;
+  --border-container: #212121
+  --text-primary: #ffffff;
+  --text-secondary: #8a8a8a;
+  --border-input: #333333;
+  --input-fill: #2d2d2d;
+  --accent-blue: #4a90e2;
+  --bt-primary: #262626
 }
 /* 1rem = 10px */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1c1b1f;
     --foreground: #ededed;
   }
 }
@@ -72,7 +82,7 @@ a {
 }
 
 p {
-  font-size: 1.6rem;
+   font-size: 1.4rem;
 }
 
 * {
@@ -82,6 +92,10 @@ p {
 }
 
 .toast-container {
+  font-size: 1.4rem;
+}
+
+input{
   font-size: 1.4rem;
 }
 

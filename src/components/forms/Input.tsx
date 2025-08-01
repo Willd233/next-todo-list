@@ -29,7 +29,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   return (
     <div className={styles.formGroup} style={style}>
-      {label && <label className={styles.formLabel}>{label}</label>}
+      {label && (
+        <label htmlFor={label.toLowerCase()} className={styles.formLabel}>
+          {label}
+        </label>
+      )}
 
       <div
         className={`${styles.inputContainer} ${
@@ -41,6 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         </div>
 
         <input
+          autoComplete="on"
           ref={ref}
           type={type}
           placeholder={placeholder}
