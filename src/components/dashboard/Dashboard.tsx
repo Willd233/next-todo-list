@@ -1,13 +1,20 @@
 "use client";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { LangButton } from "../langButton/LangButton";
 
 export function Dashboard() {
   const { data: session } = useSession();
 
+  const t = useTranslations("Page.Dashboard");
+
   return (
     <div>
-      <h1>Dashboard</h1>
-      <p>Welcome {session?.user?.name}</p>
+      <LangButton />
+      <h1>{t("title")}</h1>
+      <p>
+        {t("text")} {session?.user?.name}
+      </p>
     </div>
   );
 }
