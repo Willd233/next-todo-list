@@ -34,7 +34,7 @@ export function SignIn() {
 
     if (result.error) {
       setStatus("Error");
-      toast.error(result.error);
+      toast.error("Error signing in");
     } else {
       setStatus("Success");
       toast.success("Signed in successfully");

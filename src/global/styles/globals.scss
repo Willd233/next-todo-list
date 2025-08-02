@@ -11,7 +11,10 @@
   --border-input: #333333;
   --input-fill: #2d2d2d;
   --accent-blue: #4a90e2;
-  --bt-primary: #262626
+  --bt-primary: #262626;
+
+  --max-width: 120rem;
+
 }
 /* 1rem = 10px */
 @media (prefers-color-scheme: dark) {
@@ -20,6 +23,7 @@
     --foreground: #ededed;
   }
 }
+
 
 html,
 body {
@@ -98,6 +102,8 @@ p {
 input{
   font-size: 1.4rem;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   html {
