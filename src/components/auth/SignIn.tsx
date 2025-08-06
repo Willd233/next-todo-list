@@ -7,11 +7,7 @@ import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { store } from "./store";
 import { useRouter } from "next/navigation";
-
-type TSignInForm = {
-  email: string;
-  password: string;
-};
+import { TSignInForm } from "./types";
 
 export function SignIn() {
   const { status, setStatus } = store();

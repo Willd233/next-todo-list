@@ -7,13 +7,7 @@ import { Button, Form, Input } from "@/components/forms";
 import { toast } from "react-toastify";
 import styles from "./styles/SignUp.module.scss";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
-
-type TSignUpForm = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+import { TSignUpForm } from "./types";
 
 export function SignUp() {
   const { status, setStatus } = store();

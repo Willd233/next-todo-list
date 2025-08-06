@@ -1,4 +1,39 @@
 .container {
-  max-width: var(--max-width);
   margin: 0 auto;
+  background-color: var(--bg-card);
+  max-width: var(--max-width);
+  height: 100vh;
+  padding: 0 2rem;
+}
+
+.stats {
+  display: block;
+  height: 60vh;
+
+  @media (width > 768px) {
+    display: flex;
+  }
+}
+
+.todo {
+  text-align: center;
+  flex: 1;
+
+  @media (width > 768px) {
+    border-right: 1px solid #454242;
+  }
+}
+
+.completedContainer {
+  text-align: center;
+  flex: 1;
+
+  @media (width > 768px) {
+    padding: 0 2rem;
+  }
+}
+
+.titleCompleted {
+  margin: 0;
+  opacity: 0.5;
 }

@@ -1,8 +1,14 @@
 {
   "Page": {
     "Dashboard": {
-      "title": "Panel de Control",
-      "text": "Bienvenido al Panel de Control"
+      "todo": "Mi Lista de tareas",
+      "completed": "Completado",
+      "newTodo": "Nueva tarea",
+      "todoPlaceholder": "Que necesitas hacer?",
+      "create": "Crear",
+      "descriptionPlaceholder": "Descripción",
+      "noTodos": "Crea una nueva tarea",
+      "description": "Descripción"
     }
   }
 }

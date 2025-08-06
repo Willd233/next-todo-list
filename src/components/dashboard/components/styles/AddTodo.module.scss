@@ -1,0 +1,19 @@
+.addTodo {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 2rem;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.title {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 1rem;
+  color: var(--accent-blue);
+  cursor: pointer;
+}

@@ -1,8 +1,14 @@
 {
   "Page": {
     "Dashboard": {
-      "title": "Dashboard",
-      "text": "Welcome to your Dashboard"
+      "todo": "My Todo List",
+      "completed": "Completed",
+      "newTodo": "New Todo",
+      "todoPlaceholder": "What needs to be done?",
+      "create": "Create",
+      "descriptionPlaceholder": "Description",
+      "noTodos": "Create new todo",
+      "description": "Description"
     }
   }
 }

@@ -19,6 +19,14 @@
   border-radius: 1rem;
 }
 
+.checkbox {
+  width: 2rem;
+  height: 2rem;
+}
+.checkboxContainer {
+  background-color: transparent;
+}
+
 .focused {
   & > .inputIcon {
     color: #4a90e2;
