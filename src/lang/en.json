@@ -1,12 +1,20 @@
 {
   "Page": {
     "Dashboard": {
+      "AddTodo": {
+        "newTodo": "New Todo",
+        "create": "Create",
+        "todoPlaceholder": "What needs to be done?",
+        "descriptionPlaceholder": "Description"
+      },
+
+      "Todos": {
+        "description": "Description:",
+        "delete": "Delete"
+      },
+      "profile": "Profile",
       "todo": "My Todo List",
       "completed": "Completed",
-      "newTodo": "New Todo",
-      "todoPlaceholder": "What needs to be done?",
-      "create": "Create",
-      "descriptionPlaceholder": "Description",
       "noTodos": "Create new todo",
       "description": "Description"
     }

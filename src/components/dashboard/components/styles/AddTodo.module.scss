@@ -4,16 +4,17 @@
   margin-bottom: 2rem;
 
   svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.6rem;
+    height: 1.6rem;
   }
 }
 
 .title {
   display: flex;
   width: max-content;
-  align-items: center;
+  align-items: flex-end;
   gap: 1rem;
   color: var(--accent-blue);
   cursor: pointer;
+  font-size: 1.6rem;
 }

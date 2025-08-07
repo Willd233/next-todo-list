@@ -3,7 +3,13 @@
   background-color: var(--bg-card);
   max-width: var(--max-width);
   height: 100vh;
-  padding: 0 2rem;
+  padding: 0 1rem;
+}
+
+.header {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .stats {
@@ -27,13 +33,9 @@
 .completedContainer {
   text-align: center;
   flex: 1;
-
-  @media (width > 768px) {
-    padding: 0 2rem;
-  }
 }
 
 .titleCompleted {
-  margin: 0;
+  margin-top: 2rem;
   opacity: 0.5;
 }

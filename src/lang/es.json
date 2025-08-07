@@ -1,12 +1,19 @@
 {
   "Page": {
     "Dashboard": {
+      "AddTodo": {
+        "newTodo": "Nueva tarea",
+        "create": "Crear",
+        "todoPlaceholder": "Que necesitas hacer?",
+        "descriptionPlaceholder": "Descripción"
+      },
+      "Todos": {
+        "description": "Descripción:",
+        "delete": "Eliminar"
+      },
+      "profile": "Perfil",
       "todo": "Mi Lista de tareas",
       "completed": "Completado",
-      "newTodo": "Nueva tarea",
-      "todoPlaceholder": "Que necesitas hacer?",
-      "create": "Crear",
-      "descriptionPlaceholder": "Descripción",
       "noTodos": "Crea una nueva tarea",
       "description": "Descripción"
     }

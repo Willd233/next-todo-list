@@ -77,7 +77,7 @@ export function SignIn() {
           <Button
             disabled={status === "Loading"}
             type="submit"
-            variant="main"
+            variant="small"
             className={styles.button}
           >
             SignIn

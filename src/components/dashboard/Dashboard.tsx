@@ -1,14 +1,24 @@
 "use client";
-import { useTranslations } from "next-intl";
-import styles from "./styles/Dashboard.module.scss";
 
-import { Button } from "@/components/forms";
-import { useRouter } from "next/navigation";
+// Dependencies.
 import { useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+
+// Store.
 import { store } from "./store";
+
+// Types.
 import { TTodo } from "./types";
+
+// Components.
+import { Button } from "@/components/forms";
 import { AddTodo, Todos, Completed, Time } from "./components";
+
+// Styles.
+import styles from "./styles/Dashboard.module.scss";
 
 export function Dashboard() {
   const t = useTranslations("Page.Dashboard");
@@ -17,6 +27,7 @@ export function Dashboard() {
 
   const router = useRouter();
 
+  // Get Todos
   const getTodos = useCallback(async () => {
     setStatus("loading");
     try {
@@ -40,6 +51,33 @@ export function Dashboard() {
     }
   }, [setTodos, setStatus]);
 
+  // Delete Todo
+  const onDelete = async (id: string) => {
+    setStatus("loading");
+
+    try {
+      const res = await fetch(`/api/todos/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!res.ok) {
+        const dataError = await res.json();
+        setStatus("error");
+        toast.error(dataError.message);
+      } else {
+        setStatus("success");
+        toast.success("Todo deleted successfully");
+        getTodos();
+      }
+    } catch (error: any) {
+      setStatus("error");
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     if (status === "idle") {
       getTodos();
@@ -48,24 +86,26 @@ export function Dashboard() {
 
   return (
     <div className={styles.container}>
-      <Button
-        icon={faUser}
-        onClick={() => {
-          router.push("/dashboard/profile");
-        }}
-      >
-        Profile
-      </Button>
+      <div className={styles.header}>
+        <Button
+          icon={faUser}
+          onClick={() => {
+            router.push("/dashboard/profile");
+          }}
+        >
+          {t("profile")}
+        </Button>
+      </div>
       <Time />
       <section className={styles.stats}>
         <div className={styles.todo}>
           <h1>{t("todo")}</h1>
           <AddTodo getTodos={getTodos} />
-          <Todos getTodos={getTodos} />
+          <Todos getTodos={getTodos} onDelete={onDelete} />
         </div>
         <div className={styles.completedContainer}>
-          <h3 className={styles.titleCompleted}>{t("completed")}</h3>
-          <Completed getTodos={getTodos} />
+          <h1 className={styles.titleCompleted}>{t("completed")}</h1>
+          <Completed getTodos={getTodos} onDelete={onDelete} />
         </div>
       </section>
     </div>

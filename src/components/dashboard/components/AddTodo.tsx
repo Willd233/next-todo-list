@@ -1,22 +1,28 @@
-import { Button, Form, Input } from "@/components/forms";
-import { TTodo } from "../types";
+// Dependencies
+import { toast } from "react-toastify";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
-import styles from "./styles/AddTodo.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
-import Dialog from "@/components/dialog/Dialog.component";
-import { toast } from "react-toastify";
+
+// Store
 import { store } from "../store";
 
-type AddTodoProps = {
-  getTodos: () => Promise<never[] | undefined>;
-  text?: string;
-};
+// Components
+import { Button, Form, Input } from "@/components/forms";
+import Dialog from "@/components/dialog/Dialog";
 
-export function AddTodo({ getTodos }: AddTodoProps) {
-  const t = useTranslations("Page.Dashboard");
+// Types
+import { AddTodoProps, TTodo } from "../types";
+
+// Styles
+import styles from "./styles/AddTodo.module.scss";
+
+export function AddTodo(props: AddTodoProps) {
+  const { getTodos } = props;
+
+  const t = useTranslations("Page.Dashboard.AddTodo");
 
   const { status, setStatus, showModalAdd, setShowModalAdd } = store();
 

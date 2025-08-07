@@ -31,27 +31,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   if (type === "checkbox") {
     return (
-      <div className={classNames(styles.formGroup, styles.checkboxGroup)}>
+      <div className={classNames(styles.inputGroup, styles.checkboxGroup)}>
         <input
           ref={ref}
           type="checkbox"
           className={styles.checkbox}
           {...rest}
         />
-        {label && (
-          <label
-            htmlFor={rest.id || label.toLowerCase()}
-            className={styles.formLabel}
-          >
-            {label}
-          </label>
-        )}
-        {errors && <p className={styles.error}>{errors}</p>}
       </div>
     );
   }
 
-  // Renderiza el input normal
   const inputContainerStyles = classNames(styles.inputContainer, {
     [styles.focused]: isFocused,
   });
@@ -59,11 +49,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const inputStyles = classNames(styles.input);
 
   return (
-    <div className={styles.formGroup} style={style}>
+    <div className={styles.inputGroup} style={style}>
       {label && (
         <label
           htmlFor={rest.id || label.toLowerCase()}
-          className={styles.formLabel}
+          className={styles.inputLabel}
         >
           {label}
         </label>

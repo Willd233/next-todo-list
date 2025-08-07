@@ -128,7 +128,7 @@ export function SignUp() {
 
           <Button
             type="submit"
-            variant="main"
+            variant="small"
             disabled={status === "Loading"}
             className={styles.button}
           >

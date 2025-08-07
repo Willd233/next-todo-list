@@ -1,16 +1,29 @@
-import Dialog from "@/components/dialog/Dialog.component";
-import { Input } from "@/components/forms";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+// Dependencies.
+import { useTranslations } from "next-intl";
+import { toast } from "react-toastify";
+import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
+
+// Store.
 import { store } from "../store";
 
-import styles from "./styles/TodoStyles.module.scss";
-import { toast } from "react-toastify";
+// Components.
+import Dialog from "@/components/dialog/Dialog";
+import { Button, Input } from "@/components/forms";
 
-type TTodosProps = {
-  getTodos: () => Promise<never[] | undefined>;
-};
+// Helpers
+import { dateFormatter } from "@/global/helpers";
 
-export function Todos({ getTodos }: TTodosProps) {
+// Types.
+import { TTodosProps } from "../types";
+
+// Styles.
+import styles from "./styles/Todos.module.scss";
+
+export function Todos(props: TTodosProps) {
+  const { getTodos, onDelete } = props;
+
+  const t = useTranslations("Page.Dashboard.Todos");
+
   const { todos, selectedTodoId, setStatus, setSelectedTodoId } = store();
 
   const handleOpenDescriptionDialog = (id: string) => {
@@ -53,7 +66,7 @@ export function Todos({ getTodos }: TTodosProps) {
       {todos.length > 0 &&
         todos
           .filter((todo) => todo.completed === false)
-          .map(({ title, description, completed, _id }) => (
+          .map(({ title, description, completed, _id, createdAt }) => (
             <li key={_id} className={styles.itemContainer}>
               <div className={styles.todoItem}>
                 <Input
@@ -72,10 +85,27 @@ export function Todos({ getTodos }: TTodosProps) {
                 <Dialog
                   showModal={selectedTodoId === _id ? "open" : "close"}
                   setShowModal={handleCloseDescriptionDialog}
-                  position="center"
+                  position="right"
                   label={title}
                 >
-                  <p>{description}</p>
+                  <div>
+                    <h4>{dateFormatter(createdAt, "D MMMM, YYYY")}</h4>
+                    <h5 className={styles.descriptionTitle}>
+                      {t("description")}
+                    </h5>
+                    <p className={styles.description}>- {description}</p>
+                    <div className={styles.buttonsContainer}>
+                      <Button
+                        onClick={() => onDelete(_id)}
+                        className={styles.deleteButton}
+                        type="button"
+                        variant="small"
+                        icon={faTrash}
+                      >
+                        {t("delete")}
+                      </Button>
+                    </div>
+                  </div>
                 </Dialog>
               </div>
             </li>
