@@ -68,10 +68,7 @@ export function Todos(props: TTodosProps) {
           .filter((todo) => todo.completed === false)
           .map(({ title, description, completed, _id, createdAt }) => (
             <li key={_id} className={styles.itemContainer}>
-              <div
-                className={styles.todoItem}
-                onClick={() => handleOpenDescriptionDialog(_id)}
-              >
+              <div className={styles.todoItem}>
                 <Input
                   name="checkbox"
                   icon={faStar}
@@ -79,7 +76,12 @@ export function Todos(props: TTodosProps) {
                   type="checkbox"
                   onChange={() => onCompleted(_id, !completed)}
                 />
-                <h3 className={styles.TodoTitle}>{title}</h3>
+                <h3
+                  className={styles.TodoTitle}
+                  onClick={() => handleOpenDescriptionDialog(_id)}
+                >
+                  {title}
+                </h3>
                 <Dialog
                   showModal={selectedTodoId === _id ? "open" : "close"}
                   setShowModal={handleCloseDescriptionDialog}

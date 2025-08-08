@@ -68,10 +68,7 @@ export function Completed(props: TCompletedProps) {
           .filter((todo) => todo.completed === true)
           .map(({ title, description, completed, _id, createdAt }) => (
             <li key={_id} className={`${styles.itemContainer}`}>
-              <div
-                className={styles.todoItem}
-                onClick={() => handleOpenDescriptionDialog(_id)}
-              >
+              <div className={styles.todoItem}>
                 <Input
                   name="checkbox"
                   icon={faStar}
@@ -83,7 +80,12 @@ export function Completed(props: TCompletedProps) {
                   }}
                 />
 
-                <h3 className={styles.TodoTitle}>{title}</h3>
+                <h3
+                  className={styles.TodoTitle}
+                  onClick={() => handleOpenDescriptionDialog(_id)}
+                >
+                  {title}
+                </h3>
               </div>
 
               <Dialog
