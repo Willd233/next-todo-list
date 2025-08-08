@@ -16,6 +16,7 @@ import { TTodo } from "./types";
 // Components.
 import { Button } from "@/components/forms";
 import { AddTodo, Todos, Completed, Time } from "./components";
+import { Skeleton } from "@/global/components/Loading/Skeleton";
 
 // Styles.
 import styles from "./styles/Dashboard.module.scss";
@@ -90,22 +91,35 @@ export function Dashboard() {
         <Button
           icon={faUser}
           onClick={() => {
-            router.push("/dashboard/profile");
+            router.push("/dashboard/setting");
           }}
         >
-          {t("profile")}
+          {t("setting")}
         </Button>
       </div>
       <Time />
+
       <section className={styles.stats}>
         <div className={styles.todo}>
-          <h1>{t("todo")}</h1>
+          <h1 className={styles.titleTodo}>{t("todo")}</h1>
+
           <AddTodo getTodos={getTodos} />
-          <Todos getTodos={getTodos} onDelete={onDelete} />
+
+          {status === "idle" ? (
+            <Skeleton />
+          ) : (
+            <Todos getTodos={getTodos} onDelete={onDelete} />
+          )}
         </div>
+
         <div className={styles.completedContainer}>
           <h1 className={styles.titleCompleted}>{t("completed")}</h1>
-          <Completed getTodos={getTodos} onDelete={onDelete} />
+
+          {status === "idle" ? (
+            <Skeleton />
+          ) : (
+            <Completed getTodos={getTodos} onDelete={onDelete} />
+          )}
         </div>
       </section>
     </div>

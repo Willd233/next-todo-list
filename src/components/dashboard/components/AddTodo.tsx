@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 // Store
 import { store } from "../store";
@@ -78,12 +78,11 @@ export function AddTodo(props: AddTodoProps) {
       <Dialog
         showModal={showModalAdd}
         setShowModal={setShowModalAdd}
-        position="center"
+        position="right"
         label={t("newTodo")}
       >
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Input
-            icon={faStar}
             type="text"
             placeholder={t("todoPlaceholder")}
             {...register("title", {
@@ -92,12 +91,17 @@ export function AddTodo(props: AddTodoProps) {
             errors={errors.title?.message}
           />
           <textarea
+            className={styles.descriptionInput}
             placeholder={t("descriptionPlaceholder")}
             {...register("description", {
               required: true,
             })}
           />
-          <Button disabled={status === "loading"} type="submit">
+          <Button
+            disabled={status === "loading"}
+            type="submit"
+            className={styles.button}
+          >
             {t("create")}
           </Button>
         </Form>

@@ -12,7 +12,13 @@
         "description": "Description:",
         "delete": "Delete"
       },
-      "profile": "Profile",
+
+      "Realized": {
+        "description": "Description:",
+        "delete": "Delete"
+      },
+
+      "setting": "Setting",
       "todo": "My Todo List",
       "completed": "Completed",
       "noTodos": "Create new todo",

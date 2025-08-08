@@ -1,0 +1,15 @@
+.container {
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  max-width: var(--max-width);
+  height: 100vh;
+  padding: 0 1rem;
+}
+
+.content {
+  padding-top: 1rem;
+  flex-wrap: wrap;
+  display: flex;
+  gap: 3rem;
+  justify-content: space-around;
+}

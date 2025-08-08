@@ -17,9 +17,12 @@ import { TCompletedProps } from "../types";
 
 // Styles.
 import styles from "./styles/Completed.module.scss";
+import { useTranslations } from "next-intl";
 
 export function Completed(props: TCompletedProps) {
   const { getTodos, onDelete } = props;
+
+  const t = useTranslations("Page.Dashboard.Realized");
 
   const { todos, selectedTodoId, setStatus, setSelectedTodoId } = store();
 
@@ -65,7 +68,10 @@ export function Completed(props: TCompletedProps) {
           .filter((todo) => todo.completed === true)
           .map(({ title, description, completed, _id, createdAt }) => (
             <li key={_id} className={`${styles.itemContainer}`}>
-              <div className={styles.todoItem}>
+              <div
+                className={styles.todoItem}
+                onClick={() => handleOpenDescriptionDialog(_id)}
+              >
                 <Input
                   name="checkbox"
                   icon={faStar}
@@ -77,12 +83,7 @@ export function Completed(props: TCompletedProps) {
                   }}
                 />
 
-                <h3
-                  onClick={() => handleOpenDescriptionDialog(_id)}
-                  className={styles.TodoTitle}
-                >
-                  {title}
-                </h3>
+                <h3 className={styles.TodoTitle}>{title}</h3>
               </div>
 
               <Dialog
@@ -93,7 +94,9 @@ export function Completed(props: TCompletedProps) {
               >
                 <div>
                   <h4>{dateFormatter(createdAt, "D MMMM, YYYY")}</h4>
-                  <h5 className={styles.descriptionTitle}>description</h5>
+                  <h5 className={styles.descriptionTitle}>
+                    {t("description")}
+                  </h5>
                   <p className={styles.description}>- {description}</p>
                   <div className={styles.buttonsContainer}>
                     <Button
@@ -103,7 +106,7 @@ export function Completed(props: TCompletedProps) {
                       variant="small"
                       icon={faTrash}
                     >
-                      Delete
+                      {t("delete")}
                     </Button>
                   </div>
                 </div>

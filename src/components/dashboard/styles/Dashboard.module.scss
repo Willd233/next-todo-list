@@ -30,12 +30,21 @@
   }
 }
 
+.titleTodo {
+  font-size: 2rem;
+}
+
 .completedContainer {
   text-align: center;
   flex: 1;
 }
 
 .titleCompleted {
-  margin-top: 2rem;
+  font-size: 2rem;
   opacity: 0.5;
+  margin-top: 2rem;
+
+  @media (width > 768px) {
+    margin: 0;
+  }
 }

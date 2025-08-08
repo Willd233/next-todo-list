@@ -11,7 +11,13 @@
         "description": "Descripción:",
         "delete": "Eliminar"
       },
-      "profile": "Perfil",
+
+      "Realized": {
+        "description": "Descripción:",
+        "delete": "Eliminar"
+      },
+
+      "setting": "Configuración",
       "todo": "Mi Lista de tareas",
       "completed": "Completado",
       "noTodos": "Crea una nueva tarea",

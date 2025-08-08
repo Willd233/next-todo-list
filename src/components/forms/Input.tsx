@@ -4,7 +4,6 @@ import { useState, forwardRef } from "react";
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
@@ -23,7 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     placeholder,
     style,
     label,
-    icon = faUser,
+    icon,
     type = "text",
     errors = "",
     ...rest
@@ -60,9 +59,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       )}
 
       <div className={inputContainerStyles}>
-        <div className={styles.inputIcon}>
-          <FontAwesomeIcon icon={icon} />
-        </div>
+        {icon && (
+          <div className={styles.inputIcon}>
+            <FontAwesomeIcon icon={icon} />
+          </div>
+        )}
 
         <input
           autoComplete="on"
