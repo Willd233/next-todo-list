@@ -4,6 +4,28 @@ import User from "@/modules/user.schema";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
+export async function GET() {
+  try {
+    const session = await auth();
+
+    if (!session || !session.user?.id) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+
+    await dbConnect();
+
+    const user = await User.findById(session.user.id);
+
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    } else {
+      return NextResponse.json(user);
+    }
+  } catch (error: any) {
+    console.error(error);
+  }
+}
+
 export async function PUT(req: Request) {
   try {
     const { name, email, password, firstName, lastName } = await req.json();

@@ -23,6 +23,23 @@
       "completed": "Completed",
       "noTodos": "Create new todo",
       "description": "Description"
+    },
+    "Profile": {
+      "title": "Profile",
+      "name": "Name",
+      "placeholderName": "Enter your name",
+      "email": "Email",
+      "placeholderEmail": "Enter your email",
+      "firstName": "First Name",
+      "placeholderFirstName": "Enter your first name",
+      "lastName": "Last Name",
+      "placeholderLastName": "Enter your last name",
+      "password": "Password",
+      "placeholderPassword": "Enter your password",
+      "confirmPassword": "Confirm Password",
+      "placeholderConfirmPassword": "Confirm your password",
+      "save": "Save",
+      "success": "Data saved successfully"
     }
   }
 }

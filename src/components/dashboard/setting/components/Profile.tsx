@@ -1,7 +1,7 @@
 // Dependencies.
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
-import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +20,9 @@ const url = "/api/user";
 
 export function Profile() {
   const [status, setStatus] = useState<TStatus>("idle");
-  const { data: session, status: sessionStatus } = useSession();
+  const [user, setUser] = useState<TUpdateUserForm | null>(null);
+
+  const t = useTranslations("Page.Profile");
 
   const {
     register,
@@ -30,37 +32,45 @@ export function Profile() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: session?.user?.name,
-      firstName: session?.user?.firstName,
-      lastName: session?.user?.lastName,
-      email: session?.user?.email,
+      name: user?.name || "",
+      firstName: user?.firstName || "",
+      lastName: user?.lastName || "",
+      email: user?.email || "",
       password: "",
       confirmPassword: "",
     },
   });
 
-  useEffect(() => {
-    if (sessionStatus === "authenticated" && session?.user) {
-      reset({
-        name: session.user.name,
-        firstName: session.user.firstName,
-        lastName: session.user.lastName,
-        email: session.user.email,
-        password: "",
-        confirmPassword: "",
-      });
-    }
-  }, [session, sessionStatus, reset]);
-
   const password = watch("password");
+
+  const getUser = useCallback(async () => {
+    setStatus("loading");
+
+    try {
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        const dataError = await res.json();
+        toast.error(dataError.message);
+      } else {
+        const data = await res.json();
+        setUser(data);
+        reset(data);
+        setStatus("success");
+      }
+    } catch (error: any) {
+      setStatus("error");
+      toast.error(error.message);
+    }
+  }, [reset]);
 
   const onSubmit = async (data: TUpdateUserForm) => {
     setStatus("loading");
 
     const newData = {
-      name: data.name.toLowerCase().trim(),
-      firstName: data.firstName.toLowerCase().trim(),
-      lastName: data.lastName.toLowerCase().trim(),
+      name: data.name.trim(),
+      firstName: data.firstName.trim(),
+      lastName: data.lastName.trim(),
       email: data.email.toLowerCase().trim(),
       password: data.password.trim(),
     };
@@ -80,7 +90,7 @@ export function Profile() {
         toast.error(dataError.message);
       } else {
         setStatus("success");
-        toast.success("User updated successfully");
+        toast.success(t("success"));
       }
     } catch (error: any) {
       setStatus("error");
@@ -88,16 +98,20 @@ export function Profile() {
     }
   };
 
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
+
   return (
     <div className={styles.container}>
-      <h2>Profile</h2>
+      <h2>{t("title")}</h2>
       <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <Input
           id="name"
           icon={faUser}
-          label="Name"
+          label={t("name")}
           type="text"
-          placeholder="Please enter your name"
+          placeholder={t("placeholderName")}
           errors={errors.name?.message || ""}
           {...register("name", {
             required: "Name is required",
@@ -107,9 +121,9 @@ export function Profile() {
         <Input
           id="firstName"
           icon={faUser}
-          label="First Name"
+          label={t("firstName")}
           type="text"
-          placeholder="Please enter your first name"
+          placeholder={t("placeholderFirstName")}
           errors={errors.firstName?.message || ""}
           {...register("firstName")}
         />
@@ -117,9 +131,9 @@ export function Profile() {
         <Input
           id="lastName"
           icon={faUser}
-          label="Last Name"
+          label={t("lastName")}
           type="text"
-          placeholder="Please enter your last name"
+          placeholder={t("placeholderLastName")}
           errors={errors.lastName?.message || ""}
           {...register("lastName")}
         />
@@ -127,9 +141,9 @@ export function Profile() {
         <Input
           id="email"
           icon={faEnvelope}
-          label="Email"
+          label={t("email")}
           type="email"
-          placeholder="Please enter your email."
+          placeholder={t("placeholderEmail")}
           errors={errors.email?.message || ""}
           {...register("email", {
             pattern: {
@@ -142,9 +156,9 @@ export function Profile() {
         <Input
           id="password"
           icon={faKey}
-          label="Password"
-          type="text"
-          placeholder="Please enter your password"
+          label={t("password")}
+          type="password"
+          placeholder={t("placeholderPassword")}
           errors={errors.password?.message || ""}
           {...register("password", {
             minLength: {
@@ -157,12 +171,16 @@ export function Profile() {
         <Input
           id="confirmPassword"
           icon={faKey}
-          label="Confirm Password"
-          type="text"
-          placeholder="Please enter your password"
+          label={t("confirmPassword")}
+          type="password"
+          placeholder={t("placeholderConfirmPassword")}
           errors={errors.confirmPassword?.message || ""}
           {...register("confirmPassword", {
             validate: (value: string) => {
+              if (!password) {
+                return true;
+              }
+
               if (value !== password) {
                 return "Passwords do not match.";
               }
@@ -177,7 +195,7 @@ export function Profile() {
           disabled={status === "loading"}
           className={styles.button}
         >
-          save
+          {t("save")}
         </Button>
       </Form>
     </div>
