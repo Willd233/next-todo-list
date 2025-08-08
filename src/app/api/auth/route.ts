@@ -1,20 +1,25 @@
-import dbConnect from "@/lib/dbConnect";
-import User from "@/modules/user.schema";
-import bcrypt from "bcryptjs";
+// Dependencies.
 import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+
+// Models.
+import User from "@/modules/user.schema";
+
+// Lib.
+import dbConnect from "@/lib/dbConnect";
 
 export async function POST(req: Request) {
-  await dbConnect();
-
-  const { name, email, password } = await req.json();
-
-  if (!name || !email || !password) {
-    return NextResponse.json({
-      message: "All fields are required",
-    });
-  }
-
   try {
+    await dbConnect();
+
+    const { name, email, password } = await req.json();
+
+    if (!name || !email || !password) {
+      return NextResponse.json({
+        message: "All fields are required",
+      });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({

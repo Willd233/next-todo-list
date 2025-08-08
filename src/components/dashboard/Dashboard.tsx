@@ -10,8 +10,8 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 // Store.
 import { store } from "./store";
 
-// Types.
-import { TTodo } from "./types";
+// Helpers.
+import { api } from "@/global/helpers/api";
 
 // Components.
 import { Button } from "@/global/components/forms";
@@ -21,10 +21,13 @@ import { Skeleton } from "@/global/components/skeleton/Skeleton";
 // Styles.
 import styles from "./styles/Dashboard.module.scss";
 
+// Url.
+import { todoUrl } from "@/global/constants";
+
 export function Dashboard() {
   const t = useTranslations("Page.Dashboard");
 
-  const { status, setStatus, setTodos } = store();
+  const { status, setStatus, setTodos, setSelectedTodoId } = store();
 
   const router = useRouter();
 
@@ -32,19 +35,10 @@ export function Dashboard() {
   const getTodos = useCallback(async () => {
     setStatus("loading");
     try {
-      const res = await fetch("/api/todos", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const data = await api(todoUrl);
 
-      const data: TTodo[] = await res.json();
-
-      if (res.ok) {
-        setTodos(data);
-        setStatus("success");
-      }
+      setTodos(data);
+      setStatus("success");
     } catch (error: any) {
       console.log(error.message);
       setStatus("error");
@@ -57,22 +51,14 @@ export function Dashboard() {
     setStatus("loading");
 
     try {
-      const res = await fetch(`/api/todos/${id}`, {
+      await api(`${todoUrl}${id}`, {
         method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
 
-      if (!res.ok) {
-        const dataError = await res.json();
-        setStatus("error");
-        toast.error(dataError.message);
-      } else {
-        setStatus("success");
-        toast.success("Todo deleted successfully");
-        getTodos();
-      }
+      setStatus("success");
+      toast.success(t("delete"));
+      getTodos();
+      setSelectedTodoId(null);
     } catch (error: any) {
       setStatus("error");
       toast.error(error.message);

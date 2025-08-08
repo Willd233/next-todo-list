@@ -18,6 +18,8 @@ import { TTodosProps } from "../types";
 
 // Styles.
 import styles from "./styles/Todos.module.scss";
+import { api } from "@/global/helpers/api";
+import { todoUrl } from "@/global/constants";
 
 export function Todos(props: TTodosProps) {
   const { getTodos, onDelete } = props;
@@ -38,23 +40,14 @@ export function Todos(props: TTodosProps) {
     setStatus("loading");
 
     try {
-      const res = await fetch(`/api/todos/${id}`, {
+      await api(`${todoUrl}${id}`, {
         method: "PUT",
         body: JSON.stringify({ completed }),
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
 
-      if (!res.ok) {
-        const dataError = await res.json();
-        setStatus("error");
-        toast.error(dataError.message);
-      } else {
-        setStatus("success");
-        toast.success("Todo updated successfully");
-        getTodos();
-      }
+      setStatus("success");
+      toast.success(t("success"));
+      getTodos();
     } catch (error: any) {
       setStatus("error");
       toast.error(error.message);
@@ -99,7 +92,7 @@ export function Todos(props: TTodosProps) {
                         onClick={() => onDelete(_id)}
                         className={styles.deleteButton}
                         type="button"
-                        variant="small"
+                        size="small"
                         icon={faTrash}
                       >
                         {t("delete")}

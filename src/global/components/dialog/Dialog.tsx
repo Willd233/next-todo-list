@@ -80,7 +80,7 @@ export default function Dialog(props: TDialogProps) {
                 className={styles.closeButton}
                 onClick={() => setShowModal("close")}
                 type="button"
-                variant="small"
+                size="small"
               >
                 <FontAwesomeIcon icon={faX} />
               </Button>

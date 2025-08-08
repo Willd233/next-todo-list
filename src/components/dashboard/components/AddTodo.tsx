@@ -13,6 +13,12 @@ import { store } from "../store";
 import { Button, Form, Input } from "@/global/components/forms";
 import Dialog from "@/global/components/dialog/Dialog";
 
+// Helpers
+import { api } from "@/global/helpers/api";
+
+// Constants
+import { todoUrl } from "@/global/constants";
+
 // Types
 import { AddTodoProps, TTodo } from "../types";
 
@@ -37,25 +43,16 @@ export function AddTodo(props: AddTodoProps) {
     setStatus("loading");
 
     try {
-      const res = await fetch("/api/todos", {
+      await api(todoUrl, {
         method: "POST",
         body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
 
-      if (!res.ok) {
-        const dataError = await res.json();
-        setStatus("error");
-        toast.error(dataError.message);
-      } else {
-        setStatus("success");
-        toast.success("Todo created successfully");
-        reset();
-        getTodos();
-        setShowModalAdd("close");
-      }
+      setStatus("success");
+      toast.success(t("taskCreated"));
+      reset();
+      getTodos();
+      setShowModalAdd("close");
     } catch (error: any) {
       setStatus("error");
       toast.error(error.message);
@@ -94,7 +91,7 @@ export function AddTodo(props: AddTodoProps) {
             className={styles.descriptionInput}
             placeholder={t("descriptionPlaceholder")}
             {...register("description", {
-              required: true,
+              required: false,
             })}
           />
           <Button

@@ -1,16 +1,30 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { store } from "./store";
-import { useRouter } from "next/navigation";
 
-import { Button, Form, Input } from "@/global/components/forms";
+// Dependencies.
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
-import styles from "./styles/SignUp.module.scss";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
+
+// Components.
+import { Button, Form, Input } from "@/global/components/forms";
+
+// Types.
 import { TSignUpForm } from "./types";
+import { TStatus } from "@/global/types";
+
+// Helpers.
+import { api } from "@/global/helpers/api";
+
+// Styles.
+import styles from "./styles/SignUp.module.scss";
 
 export function SignUp() {
-  const { status, setStatus } = store();
+  const [status, setStatus] = useState<TStatus>("idle");
+
+  const t = useTranslations("Page.Auth.SignUp");
 
   const router = useRouter();
 
@@ -26,7 +40,7 @@ export function SignUp() {
   const password = watch("password", "");
 
   const onSubmit = async (data: TSignUpForm) => {
-    setStatus("Loading");
+    setStatus("loading");
     const newData = {
       name: data.name.toLowerCase().trim(),
       email: data.email.toLowerCase().trim(),
@@ -34,25 +48,15 @@ export function SignUp() {
     };
 
     try {
-      const res = await fetch(url, {
+      await api(url, {
         method: "POST",
         body: JSON.stringify(newData),
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
-
-      if (!res.ok) {
-        const dataError = await res.json();
-        setStatus("Error");
-        toast.error(dataError.message);
-      } else {
-        setStatus("Success");
-        toast.success("Account created successfully");
-        router.push("/auth/signin");
-      }
+      setStatus("success");
+      toast.success(t("success"));
+      router.push("/auth/signin");
     } catch (error: any) {
-      setStatus("Error");
+      setStatus("error");
       toast.error(error.message);
     }
   };
@@ -60,28 +64,28 @@ export function SignUp() {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h1 className={styles.title}>Sign Up</h1>
-        <p className={styles.description}>
-          Gestiona tus pendientes con facilidad. ¡Crea tu cuenta!
-        </p>
+        <h1 className={styles.title}>{t("signUp")}</h1>
+        <p className={styles.description}>{t("description")}</p>
+
         <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <Input
             id="name"
             icon={faUser}
-            label="Name"
+            label={t("name")}
             type="text"
-            placeholder="Please enter your name"
+            placeholder={t("placeholderName")}
             errors={errors.name?.message || ""}
             {...register("name", {
               required: "Name is required",
             })}
           />
+
           <Input
             id="email"
             icon={faEnvelope}
-            label="Email"
+            label={t("email")}
             type="email"
-            placeholder="Please enter your email."
+            placeholder={t("placeholderEmail")}
             errors={errors.email?.message || ""}
             {...register("email", {
               required: "Email is required",
@@ -95,9 +99,9 @@ export function SignUp() {
           <Input
             id="password"
             icon={faKey}
-            label="Password"
-            type="text"
-            placeholder="Please enter your password"
+            label={t("password")}
+            type="password"
+            placeholder={t("placeholderPassword")}
             errors={errors.password?.message || ""}
             {...register("password", {
               required: true,
@@ -111,9 +115,9 @@ export function SignUp() {
           <Input
             id="confirmPassword"
             icon={faKey}
-            label="Confirm Password"
-            type="text"
-            placeholder="Please enter your password"
+            label={t("confirmPassword")}
+            type="password"
+            placeholder={t("placeholderConfirmPassword")}
             errors={errors.confirmPassword?.message || ""}
             {...register("confirmPassword", {
               required: true,
@@ -128,19 +132,21 @@ export function SignUp() {
 
           <Button
             type="submit"
-            variant="small"
-            disabled={status === "Loading"}
+            size="small"
+            disabled={status === "loading"}
             className={styles.button}
           >
-            Sign Up
+            {t("signUp")}
           </Button>
+
           <div className={styles.linkContainer}>
-            <p>Ya tienes una cuenta?</p>
+            <p>{t("alreadyAccount")}</p>
+
             <p
               className={styles.link}
               onClick={() => router.push("/auth/signin")}
             >
-              Sign In
+              {t("signIn")}
             </p>
           </div>
         </Form>

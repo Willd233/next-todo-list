@@ -12,17 +12,20 @@ import { Button, Form, Input } from "@/global/components/forms";
 import { TStatus } from "@/global/types";
 import { TUpdateUserForm } from "../types";
 
+// Url.
+import { api } from "@/global/helpers/api";
+
+// Constants.
+import { urlUser } from "@/global/constants";
+
 // Styles.
 import styles from "./styles/Profile.module.scss";
-
-// Url.
-const url = "/api/user";
 
 export function Profile() {
   const [status, setStatus] = useState<TStatus>("idle");
   const [user, setUser] = useState<TUpdateUserForm | null>(null);
 
-  const t = useTranslations("Page.Profile");
+  const t = useTranslations("Page.Settings.Profile");
 
   const {
     register,
@@ -47,17 +50,11 @@ export function Profile() {
     setStatus("loading");
 
     try {
-      const res = await fetch(url);
+      const data = await api(urlUser);
 
-      if (!res.ok) {
-        const dataError = await res.json();
-        toast.error(dataError.message);
-      } else {
-        const data = await res.json();
-        setUser(data);
-        reset(data);
-        setStatus("success");
-      }
+      setUser(data);
+      reset(data);
+      setStatus("success");
     } catch (error: any) {
       setStatus("error");
       toast.error(error.message);
@@ -76,22 +73,13 @@ export function Profile() {
     };
 
     try {
-      const res = await fetch(url, {
+      await api(urlUser, {
         method: "PUT",
         body: JSON.stringify(newData),
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
 
-      if (!res.ok) {
-        const dataError = await res.json();
-        setStatus("error");
-        toast.error(dataError.message);
-      } else {
-        setStatus("success");
-        toast.success(t("success"));
-      }
+      setStatus("success");
+      toast.success(t("success"));
     } catch (error: any) {
       setStatus("error");
       toast.error(error.message);
@@ -191,7 +179,7 @@ export function Profile() {
 
         <Button
           type="submit"
-          variant="small"
+          size="small"
           disabled={status === "loading"}
           className={styles.button}
         >

@@ -1,44 +1,83 @@
 {
   "Page": {
+    "Auth": {
+      "SignIn": {
+        "signIn": "Iniciar Sesión",
+        "signUp": "Registrarse",
+        "description": "¿Listo para otro día productivo? Inicia sesión",
+        "success": "Inicio de sesión exitoso",
+        "error": "Error al iniciar sesión",
+        "email": "Correo Electronico",
+        "password": "Contraseña",
+        "noAccount": "No tienes una cuenta?"
+      },
+      "SignUp": {
+        "signIn": "Iniciar Sesión",
+        "signUp": "Registrarse",
+        "description": "Gestiona tus pendientes con facilidad. ¡Crea tu cuenta!",
+        "success": "Registro exitoso",
+        "name": "Nombre",
+        "placeholderName": "Ingrese su nombre",
+        "email": "Correo Electronico",
+        "placeholderEmail": "Ingrese su correo electronico",
+        "password": "Contraseña",
+        "placeholderPassword": "Ingrese su contraseña",
+        "confirmPassword": "Confirmar Contraseña",
+        "placeholderConfirmPassword": "Confirme su contraseña",
+        "alreadyAccount": "Ya tienes una cuenta?"
+      }
+    },
     "Dashboard": {
       "AddTodo": {
         "newTodo": "Nueva tarea",
         "create": "Crear",
         "todoPlaceholder": "Que necesitas hacer?",
-        "descriptionPlaceholder": "Descripción"
+        "descriptionPlaceholder": "Descripción",
+        "taskCreated": "Tarea creada satisfactoriamente"
       },
       "Todos": {
         "description": "Descripción:",
-        "delete": "Eliminar"
+        "delete": "Eliminar",
+        "success": "Tarea actualizada exitosamente"
       },
 
       "Realized": {
         "description": "Descripción:",
-        "delete": "Eliminar"
+        "delete": "Eliminar",
+        "success": "Tarea actualizada exitosamente"
       },
 
+      "delete": "Eliminación exitosa",
       "setting": "Configuración",
       "todo": "Mi Lista de tareas",
       "completed": "Completado",
       "noTodos": "Crea una nueva tarea",
       "description": "Descripción"
     },
-    "Profile": {
-      "title": "Perfil",
-      "name": "Nombre",
-      "placeholderName": "Ingrese su nombre",
-      "email": "Correo Electronico",
-      "placeholderEmail": "Ingrese su correo electronico",
-      "firstName": "Primer Nombre",
-      "placeholderFirstName": "Ingrese su primer nombre",
-      "lastName": "Apellido",
-      "placeholderLastName": "Ingrese su apellido",
-      "password": "Contraseña",
-      "placeholderPassword": "Ingrese su contraseña",
-      "confirmPassword": "Confirmar Contraseña",
-      "placeholderConfirmPassword": "Confirme su contraseña",
-      "save": "Guardar",
-      "success": "Datos guardados con exito"
+    "Settings": {
+      "back": "Atras",
+      "Profile": {
+        "title": "Perfil",
+        "name": "Nombre",
+        "placeholderName": "Ingrese su nombre",
+        "email": "Correo Electronico",
+        "placeholderEmail": "Ingrese su correo electronico",
+        "firstName": "Primer Nombre",
+        "placeholderFirstName": "Ingrese su primer nombre",
+        "lastName": "Apellido",
+        "placeholderLastName": "Ingrese su apellido",
+        "password": "Contraseña",
+        "placeholderPassword": "Ingrese su contraseña",
+        "confirmPassword": "Confirmar Contraseña",
+        "placeholderConfirmPassword": "Confirme su contraseña",
+        "save": "Guardar",
+        "success": "Datos guardados con exito"
+      },
+      "Preferences": {
+        "title": "Preferencias",
+        "language": "Idioma",
+        "logout": "Cerrar Sesión"
+      }
     }
   }
 }

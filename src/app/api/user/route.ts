@@ -1,8 +1,15 @@
-import { auth } from "@/auth";
-import dbConnect from "@/lib/dbConnect";
-import User from "@/modules/user.schema";
-import bcrypt from "bcryptjs";
+// Dependencies.
 import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
+
+// Modules.
+import User from "@/modules/user.schema";
+
+// Lib.
+import dbConnect from "@/lib/dbConnect";
+
+// Auth
+import { auth } from "@/auth";
 
 export async function GET() {
   try {

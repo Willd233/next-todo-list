@@ -1,5 +1,9 @@
-import { Setting } from "@/components/setting/Setting";
+import { Settings } from "@/components/settings/Settings";
 
-export default function SettingPage() {
-  return <Setting />;
+export default function SettingsPage() {
+  return (
+    <main>
+      <Settings />
+    </main>
+  );
 }

@@ -1,16 +1,26 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { Button, Form, Input } from "@/global/components/forms";
-import styles from "./styles/SignIn.module.scss";
-import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+// Dependencies.
+import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
-import { store } from "./store";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+
+// Components.
+import { Button, Form, Input } from "@/global/components/forms";
+
+// Types.
 import { TSignInForm } from "./types";
+import { TStatus } from "@/global/types";
+
+// Styles
+import styles from "./styles/SignIn.module.scss";
 
 export function SignIn() {
-  const { status, setStatus } = store();
+  const [status, setStatus] = useState<TStatus>("idle");
+  const t = useTranslations("Page.Auth.SignIn");
 
   const router = useRouter();
 
@@ -21,7 +31,7 @@ export function SignIn() {
   } = useForm<TSignInForm>();
 
   const onSubmit = async (data: TSignInForm) => {
-    setStatus("Loading");
+    setStatus("loading");
     const result = await signIn("credentials", {
       email: data.email.toLowerCase().trim(),
       password: data.password,
@@ -29,11 +39,11 @@ export function SignIn() {
     });
 
     if (result.error) {
-      setStatus("Error");
-      toast.error("Error signing in");
+      setStatus("error");
+      toast.error(t("error"));
     } else {
-      setStatus("Success");
-      toast.success("Signed in successfully");
+      setStatus("success");
+      toast.success(t("success"));
       router.push("/dashboard");
     }
   };
@@ -42,15 +52,13 @@ export function SignIn() {
     <section className={styles.section}>
       <div className={styles.container}>
         <div>
-          <h1 className={styles.title}>Sign In</h1>
-          <p className={styles.description}>
-            ¿Listo para otro día productivo? Inicia sesión
-          </p>
+          <h1 className={styles.title}>{t("signIn")}</h1>
+          <p className={styles.description}>{t("description")}</p>
         </div>
         <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <Input
             icon={faEnvelope}
-            label="Email"
+            label={t("email")}
             type="email"
             placeholder="Please enter your email."
             errors={errors.email?.message || ""}
@@ -65,8 +73,8 @@ export function SignIn() {
 
           <Input
             icon={faKey}
-            label="Password"
-            type="text"
+            label={t("password")}
+            type="password"
             placeholder="Please enter your password"
             errors={errors.password?.message || ""}
             {...register("password", {
@@ -75,20 +83,20 @@ export function SignIn() {
           />
 
           <Button
-            disabled={status === "Loading"}
+            disabled={status === "loading"}
             type="submit"
-            variant="small"
+            size="small"
             className={styles.button}
           >
-            SignIn
+            {t("signIn")}
           </Button>
           <div className={styles.linkContainer}>
-            <p>No tienes una cuenta?</p>
+            <p>{t("noAccount")}</p>
             <p
               className={styles.link}
               onClick={() => router.push("/auth/signup")}
             >
-              Sign Up
+              {t("signUp")}
             </p>
           </div>
         </Form>

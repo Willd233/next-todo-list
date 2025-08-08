@@ -18,6 +18,8 @@ import { TCompletedProps } from "../types";
 
 // Styles.
 import styles from "./styles/Completed.module.scss";
+import { api } from "@/global/helpers/api";
+import { todoUrl } from "@/global/constants";
 
 export function Completed(props: TCompletedProps) {
   const { getTodos, onDelete } = props;
@@ -38,23 +40,14 @@ export function Completed(props: TCompletedProps) {
     setStatus("loading");
 
     try {
-      const res = await fetch(`/api/todos/${id}`, {
+      await api(`${todoUrl}${id}`, {
         method: "PUT",
         body: JSON.stringify({ completed }),
-        headers: {
-          "Content-Type": "application/json",
-        },
       });
 
-      if (!res.ok) {
-        const dataError = await res.json();
-        setStatus("error");
-        toast.error(dataError.message);
-      } else {
-        setStatus("success");
-        toast.success("Todo updated successfully");
-        getTodos();
-      }
+      setStatus("success");
+      toast.success(t("success"));
+      getTodos();
     } catch (error: any) {
       setStatus("error");
       toast.error(error.message);
@@ -105,7 +98,7 @@ export function Completed(props: TCompletedProps) {
                       onClick={() => onDelete(_id)}
                       className={styles.deleteButton}
                       type="button"
-                      variant="small"
+                      size="small"
                       icon={faTrash}
                     >
                       {t("delete")}

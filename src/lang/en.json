@@ -1,45 +1,84 @@
 {
   "Page": {
+    "Auth": {
+      "SignIn": {
+        "signIn": "Login",
+        "signUp": "Register",
+        "description": "Ready for another productive day? Sign in",
+        "success": "Login successful",
+        "error": "Login failed",
+        "email": "Email",
+        "password": "Password",
+        "noAccount": "Don't have an account"
+      },
+      "SignUp": {
+        "signIn": "Sign In",
+        "signUp": "Register",
+        "description": "Manage your to-dos with ease. Create your account!",
+        "success": "Registration successful",
+        "name": "Name",
+        "placeholderName": "Enter your name",
+        "email": "Email",
+        "placeholderEmail": "Enter your email",
+        "password": "Password",
+        "placeholderPassword": "Enter your password",
+        "confirmPassword": "Confirm Password",
+        "placeholderConfirmPassword": "Confirm your password",
+        "alreadyAccount": "Already have an account?"
+      }
+    },
     "Dashboard": {
       "AddTodo": {
         "newTodo": "New Todo",
         "create": "Create",
         "todoPlaceholder": "What needs to be done?",
-        "descriptionPlaceholder": "Description"
+        "descriptionPlaceholder": "Description",
+        "taskCreated": "Task created successfully"
       },
 
       "Todos": {
         "description": "Description:",
-        "delete": "Delete"
+        "delete": "Delete",
+        "success": "Task updated successfully"
       },
 
       "Realized": {
         "description": "Description:",
-        "delete": "Delete"
+        "delete": "Delete",
+        "success": "Task updated successfully"
       },
 
+      "delete": "Delete successful",
       "setting": "Setting",
       "todo": "My Todo List",
       "completed": "Completed",
       "noTodos": "Create new todo",
       "description": "Description"
     },
-    "Profile": {
-      "title": "Profile",
-      "name": "Name",
-      "placeholderName": "Enter your name",
-      "email": "Email",
-      "placeholderEmail": "Enter your email",
-      "firstName": "First Name",
-      "placeholderFirstName": "Enter your first name",
-      "lastName": "Last Name",
-      "placeholderLastName": "Enter your last name",
-      "password": "Password",
-      "placeholderPassword": "Enter your password",
-      "confirmPassword": "Confirm Password",
-      "placeholderConfirmPassword": "Confirm your password",
-      "save": "Save",
-      "success": "Data saved successfully"
+    "Settings": {
+      "back": "Back",
+      "Profile": {
+        "title": "Profile",
+        "name": "Name",
+        "placeholderName": "Enter your name",
+        "email": "Email",
+        "placeholderEmail": "Enter your email",
+        "firstName": "First Name",
+        "placeholderFirstName": "Enter your first name",
+        "lastName": "Last Name",
+        "placeholderLastName": "Enter your last name",
+        "password": "Password",
+        "placeholderPassword": "Enter your password",
+        "confirmPassword": "Confirm Password",
+        "placeholderConfirmPassword": "Confirm your password",
+        "save": "Save",
+        "success": "Data saved successfully"
+      },
+      "Preferences": {
+        "title": "Preferences",
+        "language": "Language",
+        "logout": "Logout"
+      }
     }
   }
 }

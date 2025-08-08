@@ -37,9 +37,6 @@ export function LangSelector() {
 
   return (
     <div className={styles.languageSelector}>
-      <label htmlFor="language-select" className={styles.label}>
-        Idioma:
-      </label>
       <select
         id="language-select"
         value={locale}

@@ -7,7 +7,7 @@ type ButtonClickEvent = React.MouseEvent<HTMLButtonElement>;
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   type?: "button" | "submit" | "reset";
-  variant?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large";
   active?: boolean;
   icon?: IconDefinition;
   onClick?: (event: ButtonClickEvent) => void;
@@ -19,7 +19,7 @@ import styles from "./styles.module.css";
 export function Button(props: ButtonProps) {
   const {
     type = "button",
-    variant = "small",
+    size = "small",
     active = false,
     icon,
     onClick,
@@ -35,7 +35,7 @@ export function Button(props: ButtonProps) {
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${styles.button} ${styles[variant]} ${
+      className={`${styles.button} ${styles[size]} ${
         active ? styles.active : ""
       } ${className}`}
       style={style}

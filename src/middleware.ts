@@ -5,7 +5,7 @@ export async function middleware(req: NextRequest) {
 
   const { pathname } = req.nextUrl;
 
-  const isPrivate = pathname.startsWith("/dashboard");
+  const isPrivate = pathname.startsWith("/setting");
   const isAuthPage = pathname.startsWith("/auth");
 
   if (isLoggedIn && isAuthPage) {
@@ -20,5 +20,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/auth/:path*", "/"],
+  matcher: ["/setting/:path*", "/auth/:path*", "/"],
 };
