@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 
 // Components.
-import { Button, Form, Input } from "@/components/forms";
+import { Button, Form, Input } from "@/global/components/forms";
 
 // Types.
 import { TStatus } from "@/global/types";

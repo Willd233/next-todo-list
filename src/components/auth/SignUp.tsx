@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { store } from "./store";
 import { useRouter } from "next/navigation";
 
-import { Button, Form, Input } from "@/components/forms";
+import { Button, Form, Input } from "@/global/components/forms";
 import { toast } from "react-toastify";
 import styles from "./styles/SignUp.module.scss";
 import { faEnvelope, faKey, faUser } from "@fortawesome/free-solid-svg-icons";

@@ -10,8 +10,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { store } from "../store";
 
 // Components
-import { Button, Form, Input } from "@/components/forms";
-import Dialog from "@/components/dialog/Dialog";
+import { Button, Form, Input } from "@/global/components/forms";
+import Dialog from "@/global/components/dialog/Dialog";
 
 // Types
 import { AddTodoProps, TTodo } from "../types";

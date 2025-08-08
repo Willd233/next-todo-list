@@ -14,9 +14,9 @@ import { store } from "./store";
 import { TTodo } from "./types";
 
 // Components.
-import { Button } from "@/components/forms";
+import { Button } from "@/global/components/forms";
 import { AddTodo, Todos, Completed, Time } from "./components";
-import { Skeleton } from "@/global/components/Loading/Skeleton";
+import { Skeleton } from "@/global/components/skeleton/Skeleton";
 
 // Styles.
 import styles from "./styles/Dashboard.module.scss";
@@ -91,7 +91,7 @@ export function Dashboard() {
         <Button
           icon={faUser}
           onClick={() => {
-            router.push("/dashboard/setting");
+            router.push("/setting");
           }}
         >
           {t("setting")}

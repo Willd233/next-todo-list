@@ -1,6 +1,6 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { Button, Form, Input } from "@/components/forms";
+import { Button, Form, Input } from "@/global/components/forms";
 import styles from "./styles/SignIn.module.scss";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { signIn } from "next-auth/react";

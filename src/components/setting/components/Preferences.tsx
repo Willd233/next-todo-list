@@ -1,8 +1,8 @@
-import { Button } from "@/components/forms";
+import { Button } from "@/global/components/forms";
 import styles from "./styles/Preferences.module.scss";
 
 import { signOut } from "next-auth/react";
-import { LangSelector } from "@/components/LangSelect/LangSelect";
+import { LangSelector } from "@/global/components/LangSelect/LangSelect";
 
 export function Preferences() {
   return (

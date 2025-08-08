@@ -7,8 +7,8 @@ import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { store } from "../store";
 
 // Components.
-import Dialog from "@/components/dialog/Dialog";
-import { Button, Input } from "@/components/forms";
+import Dialog from "@/global/components/dialog/Dialog";
+import { Button, Input } from "@/global/components/forms";
 
 // Helpers
 import { dateFormatter } from "@/global/helpers";
