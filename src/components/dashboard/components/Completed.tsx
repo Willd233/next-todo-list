@@ -1,6 +1,7 @@
 // Dependencies.
 import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 // Store.
 import { store } from "../store";
@@ -17,7 +18,6 @@ import { TCompletedProps } from "../types";
 
 // Styles.
 import styles from "./styles/Completed.module.scss";
-import { useTranslations } from "next-intl";
 
 export function Completed(props: TCompletedProps) {
   const { getTodos, onDelete } = props;

@@ -14,7 +14,7 @@ export function SignUp() {
 
   const router = useRouter();
 
-  const url = "/api/auth/register";
+  const url = "/api/auth";
 
   const {
     register,
@@ -30,7 +30,7 @@ export function SignUp() {
     const newData = {
       name: data.name.toLowerCase().trim(),
       email: data.email.toLowerCase().trim(),
-      password: data.password.toLowerCase().trim(),
+      password: data.password.trim(),
     };
 
     try {
