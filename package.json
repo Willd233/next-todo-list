@@ -2,6 +2,10 @@
   "name": "next-todo-list",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Wuilliams",
+    "email": "emiliod255@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
