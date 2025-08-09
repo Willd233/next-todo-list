@@ -20,13 +20,13 @@ export const metadata: Metadata = {
   description: "Creation of a todo list",
 };
 
-const locale = await getLocale();
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
     <html lang={locale}>
       <body className={`${poppins.variable}`}>
