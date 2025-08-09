@@ -2,7 +2,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  const isLoggedIn = req.cookies.has("authjs.session-token");
+  const isLoggedIn =
+    req.cookies.has("authjs.session-token") ||
+    req.cookies.has("__Secure-authjs.session-token");
   const { pathname } = req.nextUrl;
 
   const isPublicRoute = pathname === "/" || pathname.startsWith("/auth");
