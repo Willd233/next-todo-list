@@ -5,7 +5,7 @@ import { useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 // Store.
 import { store } from "./store";
@@ -75,7 +75,7 @@ export function Dashboard() {
     <div className={styles.container}>
       <div className={styles.header}>
         <Button
-          icon={faUser}
+          icon={faGear}
           onClick={() => {
             router.push("/setting");
           }}

@@ -35,7 +35,8 @@
         "create": "Create",
         "todoPlaceholder": "What needs to be done?",
         "descriptionPlaceholder": "Description",
-        "taskCreated": "Task created successfully"
+        "taskCreated": "Task created successfully",
+        "description": "Description?"
       },
 
       "Todos": {

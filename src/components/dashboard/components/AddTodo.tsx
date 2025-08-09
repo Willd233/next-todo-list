@@ -30,7 +30,14 @@ export function AddTodo(props: AddTodoProps) {
 
   const t = useTranslations("Page.Dashboard.AddTodo");
 
-  const { status, setStatus, showModalAdd, setShowModalAdd } = store();
+  const {
+    status,
+    setStatus,
+    showModalAdd,
+    setShowModalAdd,
+    onDescription,
+    setOnDescription,
+  } = store();
 
   const {
     register,
@@ -88,13 +95,21 @@ export function AddTodo(props: AddTodoProps) {
             })}
             errors={errors.title?.message}
           />
-          <textarea
-            className={styles.descriptionInput}
-            placeholder={t("descriptionPlaceholder")}
-            {...register("description", {
-              required: false,
-            })}
+          <Input
+            type="checkbox"
+            label={t("description")}
+            checked={onDescription}
+            onChange={(e) => setOnDescription(e.target.checked)}
           />
+          {onDescription && (
+            <textarea
+              className={styles.descriptionInput}
+              placeholder={t("descriptionPlaceholder")}
+              {...register("description", {
+                required: false,
+              })}
+            />
+          )}
           <Button
             disabled={status === "loading"}
             type="submit"

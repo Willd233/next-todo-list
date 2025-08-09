@@ -27,6 +27,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   if (type === "checkbox") {
     return (
       <div className={classNames(styles.inputGroup, styles.checkboxGroup)}>
+        {label && (
+          <label
+            htmlFor={rest.id || label.toLowerCase()}
+            className={styles.inputLabel}
+          >
+            {label}
+          </label>
+        )}
         <input
           ref={ref}
           type="checkbox"

@@ -24,6 +24,7 @@ export type TTodo = {
 };
 export type TState = {
   status: TStatus;
+  onDescription: boolean;
   todos: TTodo[];
   showModalAdd: TModal;
   selectedTodoId: string | null;
@@ -31,4 +32,5 @@ export type TState = {
   setTodos: (todos: TTodo[]) => void;
   setShowModalAdd: (showModalAdd: TModal) => void;
   setSelectedTodoId: (id: string | null) => void;
+  setOnDescription: (onDescription: boolean) => void;
 };

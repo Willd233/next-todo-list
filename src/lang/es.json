@@ -35,7 +35,8 @@
         "create": "Crear",
         "todoPlaceholder": "Que necesitas hacer?",
         "descriptionPlaceholder": "Descripción",
-        "taskCreated": "Tarea creada satisfactoriamente"
+        "taskCreated": "Tarea creada satisfactoriamente",
+        "description": "Descripción?"
       },
       "Todos": {
         "description": "Descripción:",
