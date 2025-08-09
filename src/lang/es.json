@@ -8,7 +8,9 @@
         "success": "Inicio de sesión exitoso",
         "error": "Error al iniciar sesión",
         "email": "Correo Electronico",
+        "placeholderEmail": "Ingrese su correo electronico",
         "password": "Contraseña",
+        "placeholderPassword": "Ingrese su contraseña",
         "noAccount": "No tienes una cuenta?"
       },
       "SignUp": {
@@ -38,13 +40,15 @@
       "Todos": {
         "description": "Descripción:",
         "delete": "Eliminar",
-        "success": "Tarea actualizada exitosamente"
+        "success": "Tarea actualizada exitosamente",
+        "noTodos": "No hay tareas aún. ¡Agrega una!"
       },
 
       "Realized": {
         "description": "Descripción:",
         "delete": "Eliminar",
-        "success": "Tarea actualizada exitosamente"
+        "success": "Tarea actualizada exitosamente",
+        "noTodos": "No hay tareas completadas aún."
       },
 
       "delete": "Eliminación exitosa",

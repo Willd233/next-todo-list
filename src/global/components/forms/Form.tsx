@@ -1,17 +1,10 @@
 // Types
+import { TFormProps } from "@/global/types";
 
-type FormProps = {
-  className?: string;
-  style?: React.CSSProperties;
-  onSubmit?: (event: React.FormEvent) => void;
-  children?: React.ReactNode;
-};
-
-// Components
+// Styles.
 import styles from "./styles.module.css";
 
-export function Form(props: FormProps) {
-  // Destructuring props with default values
+export function Form(props: TFormProps) {
   const { className, style, onSubmit, children } = props;
 
   return (

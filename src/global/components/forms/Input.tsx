@@ -1,19 +1,15 @@
-// src/components/forms/Input/Input.tsx
 // Dependencies
 import { useState, forwardRef } from "react";
+import classNames from "classnames";
 
 // Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  label?: string;
-  icon?: any;
-  errors?: string;
-};
+// Types
+import { InputProps } from "@/global/types";
 
-// styles
+// Styles.
 import styles from "./styles.module.css";
-import classNames from "classnames";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const [isFocused, setIsFocused] = useState(false);

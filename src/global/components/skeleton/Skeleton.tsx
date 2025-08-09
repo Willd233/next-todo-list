@@ -1,3 +1,4 @@
+// Styles.
 import styles from "./Skeleton.module.scss";
 
 export function Skeleton() {

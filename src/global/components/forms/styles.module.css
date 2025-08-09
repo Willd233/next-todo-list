@@ -87,7 +87,7 @@
   gap: 5px;
 }
 .inputContainer {
-  background: rgba(59, 58, 76, 0.8);
+  background: var(--input-fill);
   height: 3.2rem;
   display: flex;
   align-items: center;

@@ -1,22 +1,13 @@
 // Dependencies.
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 // Types.
-type ButtonClickEvent = React.MouseEvent<HTMLButtonElement>;
-
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  type?: "button" | "submit" | "reset";
-  size?: "small" | "medium" | "large";
-  active?: boolean;
-  icon?: IconDefinition;
-  onClick?: (event: ButtonClickEvent) => void;
-};
+import { TButtonProps } from "@/global/types";
 
 // Styles.
 import styles from "./styles.module.css";
 
-export function Button(props: ButtonProps) {
+export function Button(props: TButtonProps) {
   const {
     type = "button",
     size = "small",

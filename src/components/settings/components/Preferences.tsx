@@ -15,13 +15,18 @@ export function Preferences() {
   return (
     <div className={styles.container}>
       <h2>{t("title")}</h2>
+
       <div>
         <label htmlFor="language-select" className={styles.label}>
           {t("language")}
         </label>
+
         <LangSelector />
       </div>
-      <Button onClick={() => signOut()}>{t("logout")}</Button>
+
+      <Button className={styles.button} onClick={() => signOut()}>
+        {t("logout")}
+      </Button>
     </div>
   );
 }

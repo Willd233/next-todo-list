@@ -1,7 +1,10 @@
+// Dependencies.
 import { SessionProvider as NextAuthSessionProvider } from "next-auth/react";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Bounce, ToastContainer } from "react-toastify";
+
+// Styles.
 import "react-toastify/dist/ReactToastify.css";
 
 export async function Providers({ children }: { children: React.ReactNode }) {
@@ -21,7 +24,7 @@ export async function Providers({ children }: { children: React.ReactNode }) {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="light"
+          theme="dark"
           transition={Bounce}
           className="toast-container"
         />

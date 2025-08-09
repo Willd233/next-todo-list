@@ -1,3 +1,4 @@
+// Dependencies.
 import mongoose, { Schema, models, model, Document } from "mongoose";
 
 export interface ITodo extends Document {

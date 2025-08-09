@@ -1,3 +1,4 @@
+// Dependencies.
 import mongoose, { Mongoose } from "mongoose";
 
 declare global {

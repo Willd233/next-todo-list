@@ -1,26 +1,18 @@
-import styles from "./styles/LangSelect.module.scss";
-
+// Dependencies.
 import { useState } from "react";
-import { setUserLocale } from "@/i18n/locales";
 import { useLocale } from "next-intl";
 
-type Locale = "en" | "es";
+// Locales.
+import { setUserLocale } from "@/i18n/locales";
 
-type LanguageKeys = {
-  spanish: string;
-  english: string;
-};
+// Types.
+import { TLocale } from "@/global/types";
 
-const languages: Record<Locale, LanguageKeys> = {
-  es: {
-    spanish: "Español",
-    english: "Inglés",
-  },
-  en: {
-    spanish: "Spanish",
-    english: "English",
-  },
-};
+// Constants.
+import { languages } from "@/global/constants";
+
+// Styles.
+import styles from "./styles/LangSelect.module.scss";
 
 export function LangSelector() {
   const getLocale = useLocale();
@@ -30,7 +22,7 @@ export function LangSelector() {
   const handleLanguageChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const newLocale = event.target.value as Locale;
+    const newLocale = event.target.value as TLocale;
     setUserLocale({ name: "locale", value: newLocale });
     setLocale(newLocale);
   };
@@ -42,8 +34,8 @@ export function LangSelector() {
         value={locale}
         onChange={handleLanguageChange}
       >
-        <option value="es">{languages[locale as Locale].spanish}</option>
-        <option value="en">{languages[locale as Locale].english}</option>
+        <option value="es">{languages[locale as TLocale].spanish}</option>
+        <option value="en">{languages[locale as TLocale].english}</option>
       </select>
     </div>
   );

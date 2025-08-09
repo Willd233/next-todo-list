@@ -42,7 +42,7 @@ export function SignUp() {
   const onSubmit = async (data: TSignUpForm) => {
     setStatus("loading");
     const newData = {
-      name: data.name.toLowerCase().trim(),
+      name: data.name.trim(),
       email: data.email.toLowerCase().trim(),
       password: data.password.trim(),
     };
@@ -52,6 +52,7 @@ export function SignUp() {
         method: "POST",
         body: JSON.stringify(newData),
       });
+
       setStatus("success");
       toast.success(t("success"));
       router.push("/auth/signin");

@@ -1,10 +1,13 @@
+// Dependencies.
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
+
+// Locales.
 import { getUserLocale } from "@/i18n/locales";
 
-type TLocale = "en" | "es";
-
-const defaultValue: TLocale = "en";
+// Types.
+import { TLocale } from "@/global/types";
+import { defaultValue } from "@/global/constants";
 
 export default getRequestConfig(async () => {
   const cookieStore = cookies();

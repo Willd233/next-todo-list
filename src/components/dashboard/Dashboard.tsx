@@ -18,11 +18,11 @@ import { Button } from "@/global/components/forms";
 import { AddTodo, Todos, Completed, Time } from "./components";
 import { Skeleton } from "@/global/components/skeleton/Skeleton";
 
-// Styles.
-import styles from "./styles/Dashboard.module.scss";
-
 // Url.
 import { todoUrl } from "@/global/constants";
+
+// Styles.
+import styles from "./styles/Dashboard.module.scss";
 
 export function Dashboard() {
   const t = useTranslations("Page.Dashboard");
@@ -83,6 +83,7 @@ export function Dashboard() {
           {t("setting")}
         </Button>
       </div>
+
       <Time />
 
       <section className={styles.stats}>

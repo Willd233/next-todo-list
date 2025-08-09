@@ -8,7 +8,9 @@
         "success": "Login successful",
         "error": "Login failed",
         "email": "Email",
+        "placeholderEmail": "Enter your email",
         "password": "Password",
+        "placeholderPassword": "Enter your password",
         "noAccount": "Don't have an account"
       },
       "SignUp": {
@@ -39,13 +41,15 @@
       "Todos": {
         "description": "Description:",
         "delete": "Delete",
-        "success": "Task updated successfully"
+        "success": "Task updated successfully",
+        "noTodos": "No todos yet. Add one!"
       },
 
       "Realized": {
         "description": "Description:",
         "delete": "Delete",
-        "success": "Task updated successfully"
+        "success": "Task updated successfully",
+        "noTodos": "No completed todos yet."
       },
 
       "delete": "Delete successful",

@@ -10,16 +10,18 @@ import { store } from "../store";
 import Dialog from "@/global/components/dialog/Dialog";
 import { Button, Input } from "@/global/components/forms";
 
+// Constants.
+import { todoUrl } from "@/global/constants";
+
 // Helpers.
 import { dateFormatter } from "@/global/helpers";
+import { api } from "@/global/helpers/api";
 
 // Types.
 import { TCompletedProps } from "../types";
 
 // Styles.
 import styles from "./styles/Completed.module.scss";
-import { api } from "@/global/helpers/api";
-import { todoUrl } from "@/global/constants";
 
 export function Completed(props: TCompletedProps) {
   const { getTodos, onDelete } = props;
@@ -54,12 +56,13 @@ export function Completed(props: TCompletedProps) {
     }
   };
 
+  const completedTodosList = todos.filter((todo) => todo.completed);
+
   return (
     <>
-      {todos.length > 0 &&
-        todos
-          .filter((todo) => todo.completed === true)
-          .map(({ title, description, completed, _id, createdAt }) => (
+      {completedTodosList.length > 0 ? (
+        completedTodosList.map(
+          ({ title, description, completed, _id, createdAt }) => (
             <li key={_id} className={`${styles.itemContainer}`}>
               <div className={styles.todoItem}>
                 <Input
@@ -107,7 +110,11 @@ export function Completed(props: TCompletedProps) {
                 </div>
               </Dialog>
             </li>
-          ))}
+          )
+        )
+      ) : (
+        <h3 className={styles.noTodos}>{t("noTodos")}</h3>
+      )}
     </>
   );
 }

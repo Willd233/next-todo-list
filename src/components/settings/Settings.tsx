@@ -1,5 +1,4 @@
 "use client";
-
 // Dependencies.
 import { useTranslations } from "next-intl";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";

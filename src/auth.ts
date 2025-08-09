@@ -1,8 +1,15 @@
+// Dependencies.
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import CredentialProvider from "next-auth/providers/credentials";
+
+// Auth
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+
+// Schemas
 import User from "./modules/user.schema";
+
+// Lib
 import clientPromise from "./lib/mongodb";
 import dbConnect from "./lib/dbConnect";
 

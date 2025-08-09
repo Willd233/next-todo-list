@@ -1,4 +1,7 @@
+// Dependencies.
 import { create } from "zustand";
+
+// Types.
 import { TState } from "../types";
 
 export const store = create<TState>((set) => ({

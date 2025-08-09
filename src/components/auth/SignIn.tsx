@@ -60,7 +60,7 @@ export function SignIn() {
             icon={faEnvelope}
             label={t("email")}
             type="email"
-            placeholder="Please enter your email."
+            placeholder={t("emailPlaceholder")}
             errors={errors.email?.message || ""}
             {...register("email", {
               required: "Email is required",
@@ -75,7 +75,7 @@ export function SignIn() {
             icon={faKey}
             label={t("password")}
             type="password"
-            placeholder="Please enter your password"
+            placeholder={t("passwordPlaceholder")}
             errors={errors.password?.message || ""}
             {...register("password", {
               required: true,

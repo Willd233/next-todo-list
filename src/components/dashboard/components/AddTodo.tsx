@@ -78,8 +78,9 @@ export function AddTodo(props: AddTodoProps) {
         position="right"
         label={t("newTodo")}
       >
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <Input
+            className={styles.input}
             type="text"
             placeholder={t("todoPlaceholder")}
             {...register("title", {
